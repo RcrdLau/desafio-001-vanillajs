@@ -24,3 +24,11 @@ Uma calculadora simples que conseque calcular números positivos ou negativos
 * [Gulp](https://browsersync.io/docs/gulp)
 * [Vanilla JS](http://vanilla-js.com/)
 * [You dont need jquery](https://blog.garstasio.com/you-dont-need-jquery/selectors/)
+
+## Desafio ##
+### Critério de aceite ###
+* Aceitar números enviados com o sinal `x`
+* Aceitar números enviados com o sinal `/`
+* Resolver números começados com `x` multiplicando o resultado
+* Resolver números começados com `/` dividindo o resultado
+
