@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    background: #010d18;
+}
+
+ul {
+    padding: 0 0 80px;
+}
+
+ul li {
+    margin: 24px;
+    color: #CCC;
+    font: 22px 'Roboto Mono', monospace;
+}
+
+.error {
+    position: fixed;
+    right: 0;
+    left: 0; 
+    bottom: 80px;
+    opacity: 0;
+    background: #ffa1a1;
+    color: #ff0000;
+    font: 16px 'Roboto Mono', monospace;
+    padding: 16px;
+}
+
+.input-container {
+    position: fixed;
+    right: 0;
+    left: 0; 
+    bottom: 0;
+    height: 80px;
+    background: #0d1d2b;
+}
+
+.input-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.input-wrapper > div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 24px;
+    right: 72px;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    color: #CCC;
+    border: none;
+    outline: none;
+    font: 16px 'Roboto Mono', monospace;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    right: 24px;
+    top: 0;
+    bottom: 0;
+    background: transparent;
+}
+
+button svg {
+    fill: #00e087;
+}
