@@ -20,6 +20,8 @@ function init() {
     addLine("Coloque só números");
     addLine("eles podem ser");
     addLine("negativos ou positivos");
+    addLine("para multiplicar adicione x antes do numero (ex: x2)");
+    addLine("para dividir adicione / antes do numero (ex: /2)");
     addLine("***");
     addLine("Para ver resultados, coloque =");
     addLine("***");
@@ -28,22 +30,28 @@ function init() {
 
 function sendCommand() {
     let value = domInput.value;
+    let numb = +(value.substr(1));
+    console.log("isNumber = " + numb, typeof numb);
+    console.log("value = " + value, typeof value);
+
     if (value == "=") {
         resolveCalculation();
-    } else if (value.length == 0) {
-        showError("Insira um número");
-    } else if (!isNaN(value)) {
+    } else if (!isNaN(numb)) {
         if (resolved) {
             clearCommands();
             resolved = false;
         }
-
-        if (value.charAt(0) == "+" ||
-            value.charAt(0) == "-") {
+        if ((value.charAt(0) == "+") || 
+            (value.charAt(0) == "-") || 
+            (value.charAt(0) == "x") && (isNumber(numb)) || 
+            (value.charAt(0) == "/") && (isNumber(numb)) 
+           ) {
             addLine(value);
         } else {
             addLine("+" + value);
         }
+    } else if (value.length == 0) {
+        showError("Insira um número");
     } else {
         showError("Não é um número");
     }
@@ -60,14 +68,29 @@ function resolveCalculation() {
     } else {
         let result = 0;
         for (let i = 0; i < lines.length; i++) {
-            result += Number(lines[i].innerHTML);
+            if (lines[i].innerHTML.charAt(0) == "x") {
+                result *= Number(lines[i].innerHTML.substr(1));
+                console.log("aqui x, ",lines[i], " e ", lines[i].innerHTML )
+
+            } else if (lines[i].innerHTML.charAt(0) == "/") {
+                result /= Number(lines[i].innerHTML.substr(1));
+                console.log("aqui /, ",lines[i], " e ", lines[i].innerHTML )
+
+            } else {
+                result += Number(lines[i].innerHTML);
+                console.log("aqui, ",lines[i], " e ", lines[i].innerHTML )
+            }
         }
 
         resolved = true;
-
-        addLine("***");
-        addLine("O resultado da conta é: ");
-        addLine(result);
+        if (isNaN(result)) {
+            addLine("***");
+            addLine("Algo deu errado na sua conta")
+        } else {
+            addLine("***");
+            addLine("O resultado da conta é: ");
+            addLine(result);
+        }
     }
 }
 
@@ -104,4 +127,8 @@ function errorFade() {
         domError.style.opacity = newOpacity;
         setTimeout(errorFade, 40);
     }
+}
+
+function isNumber(n) { //retorna true se a variavel tiver apenas numeros
+    return !isNaN(parseFloat(n)) && isFinite(n);
 }
