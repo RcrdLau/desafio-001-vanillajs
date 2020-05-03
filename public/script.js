@@ -31,8 +31,6 @@ function init() {
 function sendCommand() {
     let value = domInput.value;
     let numb = +(value.substr(1));
-    console.log("isNumber = " + numb, typeof numb);
-    console.log("value = " + value, typeof value);
 
     if (value == "=") {
         resolveCalculation();
@@ -70,15 +68,10 @@ function resolveCalculation() {
         for (let i = 0; i < lines.length; i++) {
             if (lines[i].innerHTML.charAt(0) == "x") {
                 result *= Number(lines[i].innerHTML.substr(1));
-                console.log("aqui x, ",lines[i], " e ", lines[i].innerHTML )
-
             } else if (lines[i].innerHTML.charAt(0) == "/") {
                 result /= Number(lines[i].innerHTML.substr(1));
-                console.log("aqui /, ",lines[i], " e ", lines[i].innerHTML )
-
             } else {
                 result += Number(lines[i].innerHTML);
-                console.log("aqui, ",lines[i], " e ", lines[i].innerHTML )
             }
         }
 
@@ -102,7 +95,7 @@ function addLine(text) {
 }
 
 function scrollEndPage() {
-    document.documentElement.scrollTop = document.body.scrollTop = 9999999;
+    document.documentElement.scrollTop = document.body.scrollTop = 99*99;
 }
 
 function clearCommands() {
