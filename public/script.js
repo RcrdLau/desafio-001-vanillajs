@@ -45,6 +45,8 @@ function sendCommand() {
             (value.charAt(0) == "/") && (isNumber(numb)) 
            ) {
             addLine(value);
+        } else if (!isNumber(value)) {
+            showError("Não é um número");
         } else {
             addLine("+" + value);
         }
